@@ -1,0 +1,410 @@
+R1
+
+enable
+configure terminal
+hostname R1
+banner motd "ACESSO APENAS PARA PESSOAS DO TI"
+interface gigabitethernet 0/1
+ip address 192.168.0.1 255.255.224.0
+description REDE 192.168.0.0
+no shutdown
+exit
+ip route 172.16.0.0 255.255.0.0 201.187.89.1
+ip route 172.16.0.0 255.255.0.0 201.187.89.21
+ip route 172.16.0.0 255.255.0.0 201.187.89.13
+ip route 172.16.0.0 255.255.0.0 201.187.89.5
+ip route 172.16.0.0 255.255.0.0 201.187.89.9
+ip route 172.16.0.0 255.255.0.0 201.187.89.17
+ip route 192.168.32.0 255.255.248.0 201.187.89.21
+ip route 192.168.32.0 255.255.248.0 201.187.89.5
+ip route 192.168.32.0 255.255.248.0 201.187.89.9
+ip route 192.168.32.0 255.255.248.0 201.187.89.1
+ip route 192.168.32.0 255.255.248.0 201.187.89.13
+ip route 192.168.32.0 255.255.248.0 201.187.89.17
+ip route 10.0.0.0 255.0.0.0 201.187.89.5
+ip route 10.0.0.0 255.0.0.0 201.187.89.1
+ip route 10.0.0.0 255.0.0.0 201.187.89.13
+ip route 10.0.0.0 255.0.0.0 201.187.89.21
+ip route 10.0.0.0 255.0.0.0 201.187.89.9
+ip route 10.0.0.0 255.0.0.0 201.187.89.17
+interface serial 0/0/0
+ip address 201.187.89.1 255.255.255.252
+no shutdown
+exit
+interface serial 0/1/1
+ip address 201.187.89.21 255.255.255.252
+no shutdown
+exit
+interface serial 0/0/1
+ip address 201.187.89.5 255.255.255.252
+no shutdown
+exit
+interface g0/0.10
+encapsulation dot1q 10
+ip address 192.168.0.1 255.255.224.0
+exit
+interface g0/0.20
+encapsulation dot1q 20
+ip address 192.168.0.1 255.255.224.0
+exit
+interface g0/0.30
+encapsulation dot1q 30
+ip address 192.168.0.1 255.255.224.0
+exit
+interface g0/0.40
+encapsulation dot1q 40
+ip address 192.168.0.1 255.255.224.0
+exit
+do wr
+
+R2
+
+enable
+configure terminal
+hostname R2
+banner motd "ACESSO APENAS PARA PESSOAS DO TI"
+interface gigabitethernet 0/1
+ip address 10.0.0.1 255.0.0.0
+description REDE 10.0.0.0
+no shutdown
+exit
+ip route 192.168.0.0 255.255.224.0 201.187.89.5
+ip route 192.168.0.0 255.255.224.0 201.187.89.17
+ip route 192.168.0.0 255.255.224.0 201.187.89.9
+ip route 192.168.0.0 255.255.224.0 201.187.89.12
+ip route 192.168.0.0 255.255.224.0 201.187.89.21
+ip route 192.168.0.0 255.255.224.0 201.187.89.1
+ip route 192.168.32.0 255.255.248.0 201.187.89.9
+ip route 192.168.32.0 255.255.248.0 201.187.89.17
+ip route 192.168.32.0 255.255.248.0 201.187.89.5
+ip route 192.168.32.0 255.255.248.0 201.187.89.1
+ip route 192.168.32.0 255.255.248.0 201.187.89.21
+ip route 192.168.32.0 255.255.248.0 201.187.89.13
+ip route 172.16.0.0 255.240.0.0 201.187.89.17
+ip route 172.16.0.0 255.240.0.0 201.187.89.5
+ip route 172.16.0.0 255.240.0.0 201.187.89.9
+ip route 172.16.0.0 255.240.0.0 201.187.89.1
+ip route 172.16.0.0 255.240.0.0 201.187.89.21
+ip route 172.16.0.0 255.240.0.0 201.187.89.13
+interface serial 0/0/1
+ip address 201.187.89.5 255.255.255.252
+no shutdown
+exit
+interface serial 0/0/0
+ip address 201.187.89.9 255.255.255.252
+no shutdown
+exit
+interface serial 0/1/1
+ip address 201.187.89.17 255.255.255.252
+no shutdown
+exit
+interface g0/0.50
+encapsulation dot1q 50
+ip address 10.0.0.1 255.0.0.0
+exit
+interface g0/0.60
+encapsulation dot1q 60
+ip address 10.0.0.1 255.0.0.0
+exit
+interface g0/0.70
+encapsulation dot1q 70
+ip address 10.0.0.1 255.0.0.0
+exit
+interface g0/0.80
+encapsulation dot1q 80
+ip address 10.0.0.1 255.0.0.0
+do wr
+
+R3
+
+enable
+configure terminal
+hostname R3
+banner motd "ACESSO APENAS PARA PESSOAS DO TI"
+interface gigabitethernet 0/1
+ip address 192.168.32.1 255.255.248.0
+description REDE 192.168.32.0
+no shutdown
+exit
+ip route 192.168.0.0 255.255.224.0 201.187.89.21
+ip route 192.168.0.0 255.255.224.0 201.187.89.9
+ip route 192.168.0.0 255.255.224.0 201.187.89.13
+ip route 192.168.0.0 255.255.224.0 201.187.89.17
+ip route 192.168.0.0 255.255.224.0 201.187.89.1
+ip route 192.168.0.0 255.255.224.0 201.187.89.5
+ip route 10.0.0.0 255.0.0.0 201.187.89.9
+ip route 10.0.0.0 255.0.0.0 201.187.89.13
+ip route 10.0.0.0 255.0.0.0 201.187.89.1
+ip route 10.0.0.0 255.0.0.0 201.187.89.21
+ip route 10.0.0.0 255.0.0.0 201.187.89.17
+ip route 10.0.0.0 255.0.0.0 201.187.89.5
+ip route 172.16.0.0 255.240.0.0 201.187.89.13
+ip route 172.16.0.0 255.240.0.0 201.187.89.21
+ip route 172.16.0.0 255.240.0.0 201.187.89.9
+ip route 172.16.0.0 255.240.0.0 201.187.89.5
+ip route 172.16.0.0 255.240.0.0 201.187.89.17
+ip route 172.16.0.0 255.240.0.0 201.187.89.1
+interface serial 0/1/1
+ip address 201.187.89.21 255.255.255.252
+no shutdown
+exit
+interface serial 0/0/0
+ip address 201.187.89.9 255.255.255.252
+no shutdown
+interface serial 0/0/1
+ip address 201.187.89.13 255.255.255.252
+no shutdown
+exit
+interface g0/0.80
+encapsulation dot1q 80
+ip address 192.168.32.1 255.255.248.0
+exit
+interface g0/0.60
+encapsulation dot1q 60
+ip address 192.168.32.1 255.255.248.0
+exit
+interface g0/0.88
+encapsulation dot1q 88
+ip address 192.168.32.1 255.255.248.0
+exit
+interface g0/0.100
+encapsulation dot1q 100
+ip address 192.168.32.1 255.255.248.0
+do wr
+
+
+R4
+
+enable
+configure terminal
+hostname R4
+banner motd "ACESSO APENAS PARA PESSOAS DO TI"
+interface gigabitethernet 0/1
+ip address 172.16.0.1 255.240.0.0
+description REDE 172.16.0.0
+no shutdown
+exit
+ip route 192.168.0.0 255.255.224.0 201.187.89.1
+ip route 192.168.0.0 255.255.224.0 201.187.89.13
+ip route 192.168.0.0 255.255.224.0 201.187.89.17
+ip route 192.168.0.0 255.255.224.0 201.187.89.21
+ip route 192.168.0.0 255.255.224.0 201.187.89.9
+ip route 192.168.0.0 255.255.224.0 201.187.89.5
+ip route 10.0.0.0 255.0.0.0 201.187.89.17
+ip route 10.0.0.0 255.0.0.0 201.187.89.1
+ip route 10.0.0.0 255.0.0.0 201.187.89.13
+ip route 10.0.0.0 255.0.0.0 201.187.89.21
+ip route 10.0.0.0 255.0.0.0 201.187.89.9
+ip route 10.0.0.0 255.0.0.0 201.187.89.5
+ip route 192.168.32.0 255.255.240.0 201.187.89.13
+ip route 192.168.32.0 255.255.240.0 201.187.89.21
+ip route 192.168.32.0 255.255.240.0 201.187.89.9
+ip route 192.168.32.0 255.255.240.0 201.187.89.5
+ip route 192.168.32.0 255.255.240.0 201.187.89.1
+ip route 192.168.32.0 255.255.240.0 201.187.89.17
+interface serial 0/0/0
+ip address 201.187.89.1 255.255.255.252
+no shutdown
+exit
+interface serial 0/1/1
+ip address 201.187.89.17 255.255.255.252
+no shutdown
+interface serial 0/0/1
+ip address 201.187.89.13 255.255.255.252
+no shutdown
+exit
+interface g0/0.88
+encapsulation dot1q 88
+ip address 172.16.0.1 255.240.0.0
+exit
+interface g0/0.200
+encapsulation dot1q 200
+ip address 172.16.0.1 255.240.0.0
+exit
+interface g0/0.90
+encapsulation dot1q 90
+ip address 172.16.0.1 255.240.0.0
+exit
+interface g0/0.88
+encapsulation dot1q 88
+ip address 172.16.0.1 255.240.0.0
+do wr
+
+SW-01
+
+enable
+configure terminal
+hostname SW-01
+banner motd "ACESSO APENAS PARA PESSOAS DO TI"
+ip default-gateway 192.168.0.1
+interface vlan 1
+ip address 192.168.255.254 255.255.224.0
+exit
+vlan 10
+name TESTES
+exit
+vlan 20
+name TELEMARKETING
+exit
+vlan 30
+name CONSULTORES
+exit
+vlan 40 
+name RH
+exit
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 10
+exit
+interface fastEthernet 0/10
+switchport mode access
+switchport access vlan 20
+exit
+interface fastEthernet 0/18
+switchport mode access
+switchport access vlan 30
+exit
+interface fastEthernet 0/23
+switchport mode access
+switchport access vlan 40
+exit
+interface fastEthernet 0/5
+switchport mode trunk
+switchport trunk native vlan 88
+switchport trunk allowed vlan 10,20,30,40
+do wr
+
+SW-02
+
+enable
+configure terminal
+hostname SW-02
+banner motd "ACESSO APENAS PARA PESSOAS DO TI"
+ip default-gateway 10.0.0.1
+interface vlan 1
+ip address 10.0.0.254 255.0.0.0
+no shutdown
+exit
+vlan 50
+name ANALISTAS
+exit
+vlan 60
+name OPERACAO
+exit
+vlan 70
+name TI
+exit
+vlan 80 
+name ADMINISTRATIVO
+exit
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 50
+exit
+interface fastEthernet 0/24
+switchport mode access
+switchport access vlan 20
+exit
+interface fastEthernet 0/18
+switchport mode access
+switchport access vlan 30
+exit
+interface fastEthernet 0/23
+switchport mode access
+switchport access vlan 40
+exit
+interface fastEthernet 0/5
+switchport mode trunk
+switchport trunk native vlan 88
+switchport trunk allowed vlan 50,60,70,80
+do wr
+
+SW-03
+
+enable
+configure terminal
+hostname SW-03
+banner motd "ACESSO APENAS PARA PESSOAS DO TI"
+ip default-gateway 192.168.32.1
+interface vlan 1
+ip address 192.168.248.254 255.255.248.0
+no shutdown
+exit
+vlan 80
+name FINANCIAS
+exit
+vlan 60
+name OPERACAO
+exit
+vlan 88
+name RELOGIOS
+exit
+vlan 100 
+name LIVRE
+exit
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 80
+exit
+interface fastEthernet 0/6
+switchport mode access
+switchport access vlan 60
+exit
+interface fastEthernet 0/10
+switchport mode access
+switchport access vlan 88
+exit
+interface fastEthernet 0/20
+switchport mode access
+switchport access vlan 100
+exit
+interface fastEthernet 0/15
+switchport mode trunk
+switchport trunk native vlan 88
+switchport trunk allowed vlan 80,60,88,100
+do wr
+
+SW-04
+
+enable
+configure terminal
+hostname SW-04
+banner motd "ACESSO APENAS PARA PESSOAS DO TI"
+ip default-gateway 172.16.0.1
+interface vlan 1
+ip address 172.240.255.254 255.240.0.0
+no shutdown
+exit
+vlan 88
+name SERVIDORES
+exit
+vlan 200
+name VOZ
+exit
+vlan 90
+name TACAS
+exit
+vlan 88 
+name MONITORAMENTO
+exit
+interface fastEthernet 0/1
+switchport mode access
+switchport access vlan 88
+exit
+interface fastEthernet 0/10
+switchport mode access
+switchport access vlan 200
+exit
+interface fastEthernet 0/13
+switchport mode access
+switchport access vlan 90
+exit
+interface fastEthernet 0/15
+switchport mode access
+switchport access vlan 88
+exit
+interface fastEthernet 0/15
+switchport mode trunk
+switchport trunk native vlan 88
+switchport trunk allowed vlan 88,200,90,88
+do wr
